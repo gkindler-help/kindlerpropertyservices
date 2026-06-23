@@ -276,6 +276,7 @@
     display:grid; place-items:center; text-align:center;
   }
   .portrait .ph{ font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; color:var(--slate); text-transform:uppercase; padding:1rem; }
+  .portrait img{ width:100%; height:100%; object-fit:cover; display:block; }
   .about h2{ font-size:clamp(1.9rem,3.4vw,2.8rem); }
   .about p{ color:var(--slate); margin-top:1.1rem; }
   .about .signoff{ font-family:var(--display); font-style:italic; color:var(--ink); margin-top:1.3rem; }
@@ -483,13 +484,17 @@
   <section id="about">
     <div class="wrap about-grid about">
       <div class="portrait">
-        <span class="ph">Photo of George<br />assets/george.jpg</span>
+        <picture>
+          <source srcset="assets/about-family.webp" type="image/webp" />
+          <img src="assets/about-family.jpg" alt="George Kindler with his family — Kindler Property Services, South County St. Louis" />
+        </picture>
       </div>
       <div>
-        <p class="eyebrow">Why I started this</p>
-        <h2>Most tired-looking homes don't need a renovation. They need a cleaning.</h2>
-        <p>I started Kindler Property Services because I kept seeing the same thing: a homeowner looks at a grimy driveway or a stained patio and assumes the fix is a big, expensive project — new concrete, new siding, a full landscape overhaul. Most of the time, the house just needs to be cleaned and sealed.</p>
-        <p>If a cleaning and sealing job gets you back to pride of ownership — and for most homes, it does — I'll do it, and I'll document it properly so you can actually see what changed. If your situation genuinely needs more than that, I'll tell you so, and point you to someone who can actually help. Either way, you're not spending money you don't need to.</p>
+        <p class="eyebrow">Who I'm doing this for</p>
+        <h2>The exterior is where your biggest investment wears first.</h2>
+        <p>For most families, the house is the largest thing they'll ever own — and the outside takes the brunt of it. Sun, rain, algae, road salt, and years of grime don't just make a home look tired; left alone, they shorten the life of your siding, your concrete, and your wood. Cleaning isn't cosmetic. It's the cheapest maintenance there is for protecting the investment your family already made.</p>
+        <p>I'm not here to talk you into a renovation. Most tired-looking homes don't need one — they need the buildup taken off and the surfaces protected before damage sets in. If yours genuinely needs more, I'll tell you straight and point you to someone who can help. Either way, you're not spending money you don't need to.</p>
+        <p>I started Kindler Property Services for my own family, and I run it the way I'd want someone treating mine — show up, do honest work, document it, and leave the place better than I found it. The people I'm doing this for are South County families who want to be proud of where they live without getting oversold to get there. That's the whole job.</p>
         <p class="signoff">— George Kindler, Owner · USMC Veteran · Professional Photographer</p>
       </div>
     </div>
