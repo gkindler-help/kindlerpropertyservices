@@ -18,18 +18,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-<!-- ====================================================================
-     GA4 PLACEHOLDER — this is a NEW domain. Create a fresh GA4 property
-     for kindlerpropertyservices.com and paste its Measurement ID below.
-     Do NOT reuse the STL Home Journey ID (G-EEE14BZT9P).
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google tag (gtag.js) — GA4 for kindlerpropertyservices.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JYKGVQKJX0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-JYKGVQKJX0');
 </script>
-==================================================================== -->
 
 <style>
   :root{
@@ -131,34 +127,18 @@
   @media (max-width:900px){ .reveal{ aspect-ratio:4/3; max-width:520px; margin-inline:auto; } }
   .reveal__panel{ position:absolute; inset:0; background-size:cover; background-position:center; }
 
-  /* AFTER (clean) — bottom layer. Swap with: background-image:url('assets/after.jpg'); */
+  /* AFTER (clean) — bottom layer. Real job photo. WebP primary, JPG fallback. */
   .reveal__after{
-    background:
-      radial-gradient(120% 80% at 30% 10%, rgba(255,255,255,.55), transparent 55%),
-      linear-gradient(160deg, #d9ddd6 0%, #c5cbc3 60%, #b7bdb5 100%);
+    background-image:url('assets/after.jpg');
+    background-image:-webkit-image-set(url('assets/after.webp') type('image/webp'), url('assets/after.jpg') type('image/jpeg'));
+    background-image:image-set(url('assets/after.webp') type('image/webp'), url('assets/after.jpg') type('image/jpeg'));
   }
-  .reveal__after::after{ /* faint clean grid sheen of fresh concrete */
-    content:""; position:absolute; inset:0; opacity:.35;
-    background-image:linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
-    background-size:46px 46px;
-  }
-  /* BEFORE (grimy) — top layer, clipped. Swap with: background-image:url('assets/before.jpg'); */
+  /* BEFORE (grimy) — top layer, clipped to slider position. Real job photo. */
   .reveal__before{
     clip-path:inset(0 calc(100% - var(--pos)) 0 0);
-    background:
-      radial-gradient(90% 70% at 70% 80%, rgba(58,72,46,.5), transparent 60%),
-      radial-gradient(60% 50% at 20% 30%, rgba(40,45,40,.55), transparent 55%),
-      linear-gradient(160deg, #6f7368 0%, #565a4f 55%, #44483d 100%);
-  }
-  .reveal__before::after{ /* mottled grime + algae staining */
-    content:""; position:absolute; inset:0; opacity:.6; mix-blend-mode:multiply;
-    background-image:
-      radial-gradient(circle at 25% 35%, rgba(30,40,25,.7) 0 8%, transparent 9%),
-      radial-gradient(circle at 62% 20%, rgba(40,45,40,.6) 0 6%, transparent 7%),
-      radial-gradient(circle at 80% 65%, rgba(35,48,30,.6) 0 10%, transparent 11%),
-      radial-gradient(circle at 45% 78%, rgba(28,33,28,.6) 0 7%, transparent 8%),
-      radial-gradient(circle at 12% 70%, rgba(45,55,38,.55) 0 9%, transparent 10%);
+    background-image:url('assets/before.jpg');
+    background-image:-webkit-image-set(url('assets/before.webp') type('image/webp'), url('assets/before.jpg') type('image/jpeg'));
+    background-image:image-set(url('assets/before.webp') type('image/webp'), url('assets/before.jpg') type('image/jpeg'));
   }
   .reveal__tag{
     position:absolute; bottom:14px; font-family:var(--mono); font-size:.66rem;
@@ -191,6 +171,18 @@
   .svc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:2.6rem; }
   .svc-grid--single{ grid-template-columns:1fr; max-width:640px; }
   @media (max-width:760px){ .svc-grid{ grid-template-columns:1fr; } }
+
+  /* Before/after proof pair (static, no JS) */
+  .ba-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:2.6rem; }
+  @media (max-width:600px){ .ba-grid{ grid-template-columns:1fr; } }
+  .ba-fig{ position:relative; margin:0; border-radius:4px; overflow:hidden; aspect-ratio:4/3;
+    box-shadow:0 18px 40px -26px rgba(20,24,27,.5); }
+  .ba-fig img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .ba-label{ position:absolute; top:12px; left:12px; font-family:var(--mono);
+    font-size:.68rem; letter-spacing:.16em; text-transform:uppercase;
+    padding:.4em .75em; border-radius:2px; color:#fff; }
+  .ba-label--before{ background:rgba(20,24,27,.8); }
+  .ba-label--after{ background:rgba(28,140,124,.92); }
   .svc{ border:1px solid var(--line); border-radius:4px; padding:1.8rem; background:var(--bone); position:relative; overflow:hidden; }
   .svc h3{ font-size:1.6rem; }
   .svc ul{ list-style:none; padding:0; margin:1.1rem 0 0; columns:2; gap:1rem; }
@@ -341,7 +333,7 @@
         <p class="credline">Marine Corps veteran · <span>Professional photographer</span> · South County local</p>
       </div>
 
-      <!-- Signature: before/after reveal slider. Swap CSS panels for real photos when ready. -->
+      <!-- Signature: before/after reveal slider — real job photos (assets/before + after, webp/jpg). -->
       <div class="reveal" id="reveal" aria-label="Before and after driveway cleaning comparison">
         <div class="reveal__panel reveal__after"></div>
         <div class="reveal__panel reveal__before" id="beforePanel"></div>
@@ -380,6 +372,33 @@
           <b>Concrete sealing &amp; more, once it's done right.</b>
           <span class="ribbon">Coming soon</span>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOFT WASHING — before/after proof -->
+  <section id="softwash">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Soft washing</p>
+        <h2>Algae and oxidation, lifted off the siding — not blasted.</h2>
+        <p>Low-pressure soft wash on vinyl. Same wall, same afternoon.</p>
+      </div>
+      <div class="ba-grid">
+        <figure class="ba-fig">
+          <picture>
+            <source srcset="assets/softwash-before.webp" type="image/webp" />
+            <img src="assets/softwash-before.jpg" alt="Vinyl siding before soft washing, with green algae and oxidation staining" loading="lazy" width="1400" height="1050" />
+          </picture>
+          <figcaption class="ba-label ba-label--before">Before</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <picture>
+            <source srcset="assets/softwash-after.webp" type="image/webp" />
+            <img src="assets/softwash-after.jpg" alt="Vinyl siding after soft washing, clean white finish" loading="lazy" width="1400" height="1050" />
+          </picture>
+          <figcaption class="ba-label ba-label--after">After</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -500,7 +519,7 @@
       <div class="foot-col">
         <h4>Contact</h4>
         <a href="tel:+13144351087">314.435.1087</a>
-        <a href="mailto:hello@kindlerpropertyservices.com">hello@kindlerpropertyservices.com</a>
+        <a href="mailto:kindlerpropertyservices@gmail.com">kindlerpropertyservices@gmail.com</a>
       </div>
       <div class="foot-col">
         <h4>Service area</h4>
@@ -568,7 +587,7 @@
     if(!tabsEl) return;
 
     var BUSINESS_PHONE = '+13144351087';
-    var BUSINESS_EMAIL = 'hello@kindlerpropertyservices.com';
+    var BUSINESS_EMAIL = 'kindlerpropertyservices@gmail.com';
 
     var SERVICES = [
       {

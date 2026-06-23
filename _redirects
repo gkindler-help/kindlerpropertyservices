@@ -1,0 +1,7 @@
+# Kindler Property Services — Cloudflare Pages redirects
+# NEVER DELETE THIS FILE. Enforces clean URLs (no .html on internal links).
+# Pattern: /path  /path.html  200   (rewrite, keeps URL clean)
+
+# Force HTTPS + apex (configure custom domain in Cloudflare dashboard)
+# Add page-level clean-URL rewrites here as you add pages, e.g.:
+# /services    /services.html    200
