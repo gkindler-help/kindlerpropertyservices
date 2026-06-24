@@ -593,6 +593,10 @@
     if(!tabsEl) return;
 
     var BUSINESS_PHONE = '+13144351087';
+    var estimateStarted = false;
+    function track(name, params){
+      if (typeof gtag === 'function'){ try { gtag('event', name, params || {}); } catch(e){} }
+    }
     var BUSINESS_EMAIL = 'kindlerpropertyservices@gmail.com';
 
     var SERVICES = [
@@ -651,6 +655,7 @@
         btn.addEventListener('click', function(){
           var svc = SERVICES.filter(function(s){ return s.id === btn.getAttribute('data-id'); })[0];
           selectService(svc);
+          track('select_surface', { surface: svc.name });
         });
       });
     }
@@ -668,13 +673,16 @@
     function addItem(){
       var qty = parseFloat(qtyEl.value) || 0;
       if(qty <= 0) return;
+      var cond = conditionEl.value;
       items.push({
         id: Date.now(),
         svc: active,
         qty: qty,
-        condition: conditionEl.value
+        condition: cond
       });
       render();
+      if(!estimateStarted){ estimateStarted = true; track('estimate_started', { surface: active.name }); }
+      track('add_to_estimate', { surface: active.name, quantity: qty, condition: cond, value: Math.round(priceForItem(active, qty, cond)), currency: 'USD' });
     }
 
     function removeItem(id){
@@ -762,6 +770,7 @@
     if(textBtn){
       textBtn.addEventListener('click', function(){
         if(items.length === 0 || !confirmEl.checked) return;
+        track('generate_lead', { method:'sms', value: Math.round(currentTotal()), currency:'USD', items: items.length, surfaces: items.map(function(i){ return i.svc.name; }).join(', ') });
         var body = encodeURIComponent(buildQuoteText());
         window.location.href = 'sms:' + BUSINESS_PHONE + '?&body=' + body;
       });
@@ -769,6 +778,7 @@
     if(emailBtn){
       emailBtn.addEventListener('click', function(){
         if(items.length === 0 || !confirmEl.checked) return;
+        track('generate_lead', { method:'email', value: Math.round(currentTotal()), currency:'USD', items: items.length, surfaces: items.map(function(i){ return i.svc.name; }).join(', ') });
         var subject = encodeURIComponent('Quote — ' + (nameEl.value.trim() || 'New customer'));
         var body = encodeURIComponent(buildQuoteText());
         window.location.href = 'mailto:' + BUSINESS_EMAIL + '?subject=' + subject + '&body=' + body;
