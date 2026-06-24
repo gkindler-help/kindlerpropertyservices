@@ -595,32 +595,32 @@
   .author-card p{ color:var(--slate); font-size:.95rem; margin-top:.6rem; }
 
   /* ---- Guides dropdown (desktop) + mobile nav drawer — no JS, <details>-based ---- */
-  .nav-guides{ position:relative; }
-  .nav-guides summary{
+  .nav-guides, .nav-areas{ position:relative; }
+  .nav-guides summary, .nav-areas summary{
     list-style:none; cursor:pointer; font-weight:500; font-size:.95rem; color:var(--slate);
     display:flex; align-items:center; gap:.3em;
   }
-  .nav-guides summary::-webkit-details-marker{ display:none; }
-  .nav-guides summary:hover{ color:var(--hydro-deep); }
-  .nav-guides[open] summary{ color:var(--hydro-deep); }
-  .nav-guides .caret{ font-size:.7em; transition:transform .15s ease; }
-  .nav-guides[open] .caret{ transform:rotate(180deg); }
-  .nav-guides-menu{
+  .nav-guides summary::-webkit-details-marker, .nav-areas summary::-webkit-details-marker{ display:none; }
+  .nav-guides summary:hover, .nav-areas summary:hover{ color:var(--hydro-deep); }
+  .nav-guides[open] summary, .nav-areas[open] summary{ color:var(--hydro-deep); }
+  .nav-guides .caret, .nav-areas .caret{ font-size:.7em; transition:transform .15s ease; }
+  .nav-guides[open] .caret, .nav-areas[open] .caret{ transform:rotate(180deg); }
+  .nav-guides-menu, .nav-areas-menu{
     position:absolute; top:100%; left:0; margin-top:.7rem; min-width:250px;
     background:#fff; border:1px solid var(--line); border-radius:6px;
     padding:.4rem; display:flex; flex-direction:column; gap:.1rem;
     box-shadow:0 18px 40px -20px rgba(20,24,27,.35); z-index:90;
   }
-  .nav-guides-menu a{
+  .nav-guides-menu a, .nav-areas-menu a{
     padding:.55rem .7rem; border-radius:4px; font-size:.88rem; font-weight:500;
     color:var(--slate); text-decoration:none; white-space:nowrap;
   }
-  .nav-guides-menu a:hover{ background:var(--bone); color:var(--hydro-deep); }
+  .nav-guides-menu a:hover, .nav-areas-menu a:hover{ background:var(--bone); color:var(--hydro-deep); }
 
   .mobile-toggle{ display:none; }
   @media (max-width:820px){
     .nav-links a:not(.btn){ display:none; }
-    .nav-links details.nav-guides{ display:none; }
+    .nav-links details.nav-guides, .nav-links details.nav-areas{ display:none; }
     .mobile-toggle{ display:inline-flex; }
   }
   .mobile-toggle summary{
@@ -667,6 +667,13 @@
           <a href="/can-mold-on-siding-damage-your-home">Can Mold Damage Your Siding?</a>
         </div>
       </details>
+      <details class="nav-guides nav-areas">
+        <summary>Areas We Serve <span class="caret" aria-hidden="true">&#9662;</span></summary>
+        <div class="nav-guides-menu">
+          <a href="/pressure-washing-oakville-mo">Oakville, MO</a>
+          <a href="/pressure-washing-mehlville-mo">Mehlville, MO</a>
+        </div>
+      </details>
       <a href="/#about">About</a>
       <a class="btn btn--primary" href="/#contact">Free driveway cleaning</a>
     </nav>
@@ -681,6 +688,9 @@
         <a href="/driveway-cleaning-south-county-mo">Driveway Cleaning</a>
         <a href="/house-washing-south-county-mo">House Washing &amp; Soft Washing</a>
         <a href="/can-mold-on-siding-damage-your-home">Can Mold Damage Your Siding?</a>
+        <p class="mobile-menu-label">Areas We Serve</p>
+        <a href="/pressure-washing-oakville-mo">Oakville, MO</a>
+        <a href="/pressure-washing-mehlville-mo">Mehlville, MO</a>
         <a class="btn btn--primary" href="/#contact">Free driveway cleaning</a>
       </div>
     </details>
@@ -775,7 +785,7 @@
         <p>Our goal is straightforward &mdash; transparent pricing, clear expectations, and recommendations that make sense for your property. Sometimes that means recommending a service. Sometimes it means telling you to save your money.</p>
 
         <h2>South County areas we serve</h2>
-        <p>Kindler Property Services proudly serves:</p>
+        <p>Kindler Property Services proudly serves South County, including a dedicated guide for <a href="/pressure-washing-oakville-mo">pressure washing in Oakville, MO</a>:</p>
         <ul class="area-list">
           <li>Oakville</li><li>Mehlville</li><li>Affton</li><li>Concord</li>
           <li>Crestwood</li><li>Sunset Hills</li><li>Lemay</li><li>Fenton</li>
